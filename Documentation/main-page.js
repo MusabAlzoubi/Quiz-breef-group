@@ -20,7 +20,7 @@ function onload (){
         let user=JSON.parse(sessionStorage.getItem('currentUser'));
         let userName=user.Name;
         console.log("session is full "+"user is "+userName)
-        welcome.textContent="Welcome "+userName;
+        welcome.textContent="Welcome "+userName+" To Page Quiz, Exercise your brain with these interesting quizzes.";
         logIn.style.display="none";
         signUp.style.display="none";
         logOut.style.display="block";

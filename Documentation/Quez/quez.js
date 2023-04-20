@@ -12,7 +12,6 @@ const timeText = document.querySelector(".timer .time_left_txt");
 const timeCount = document.querySelector(".timer .timer_sec");
 
 
-showanswer_box.classList.add("activeactiveanswer"); //show answer box
 
 // if startQuiz button clicked
 start_btn.onclick = ()=>{
@@ -36,7 +35,6 @@ continue_btn.onclick = ()=>{
     showQuetions(0); //calling showQestions function
     queCounter(1); //passing 1 parameter to queCounter
     startTimer(30); //calling startTimer function
-    startTimerLine(0); //calling startTimerLine function
     startTimer(timeValue); //calling startTimer function
     clearInterval(counter); //clear counter
 
@@ -47,7 +45,6 @@ let que_count = 0;
 let que_numb = 1;
 let userScore = 0;
 let counter;
-let counterLine;
 let widthValue = 0;
 
 
@@ -100,7 +97,6 @@ next_btn.onclick = ()=>{
         next_btn.classList.remove("show"); //hide the next button
     }else{
         clearInterval(counter); //clear counter
-        clearInterval(counterLine); //clear counterLine
         showResult(); //calling showResult function
     }
     if(que_count == questions.length -1)
@@ -119,7 +115,6 @@ let answeruser = []
 function optionSelected(answer){
 answer.style.backgroundColor="#4c96e4";
     clearInterval(counter); //clear counter
-    clearInterval(counterLine); //clear counterLine
     let userAns = answer.textContent; //getting user selected option
     var correcAns = questions[que_count].answer; //getting correct answer from array
 const allOptions = option_list.children.length; //getting all option items
@@ -269,7 +264,7 @@ function showanser(){
             cell2.style.fontSize = "15px";
           
             // check if the answer is correct
-            if (r2[i][1] && r2[i][1].includes("Your answer is Correct 😎 =")) {
+            if (r2[i][1] && r2[i][1].includes("Your answer is Correct 😎")) {
               cell2.style.color = "green"; // set text color to green
             } else {
               cell2.style.color = "red"; // set text color to red
@@ -281,6 +276,8 @@ function showanser(){
             cell3.style.textAlign = "center"; // set text alignment to center
             cell3.style.padding = "5px"; // add padding
             cell3.style.fontSize = "15px";
+            cell3.style.color = "green"; // set text color to green
+
           
             row.appendChild(cell1);
             row.appendChild(cell2);
@@ -327,16 +324,7 @@ function startTimer(time){
         }
     }
 }
-function startTimerLine(time){
-    counterLine = setInterval(timer, 29);
-    function timer(){
-        time += 1; //upgrading time value with 1
-        time_line.style.width = time + "px"; //increasing width of time_line with px by time value
-        if(time > 549){ //if time value is greater than 549
-            clearInterval(counterLine); //clear counterLine
-        }
-    }
-}
+
 
 function queCounter(index){
     //creating a new span tag and passing the question number and total question
